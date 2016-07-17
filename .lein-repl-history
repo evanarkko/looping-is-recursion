@@ -1,0 +1,49 @@
+(defn power [base exp]
+  (if (zero? exp)
+  1
+  (* base (power base (dec exp)))))
+(power 2 2)
+(power 5 3)
+(power 7 0)
+(power 0 10)
+quit
+(defn power-helper [acc n k]
+(if (zero? k)
+acc
+(power-helper (* acc n) n (dec k))))
+(power-helper 1 2 2)
+(power-helper 1 5 3)
+(power-helper 1 0 7)
+(power-helper 1 7 0)
+quit
+(defn helper [a-seq]
+(if (== (count a-seq) 1)
+(first a-seq)
+(helper (rest a-seq))))
+(helper '(1 2 3))
+(helper '(1 2 3 3 4 5 3 2))
+(helper '(1 2 3 3 4 5 3 2 9))
+quit
+(/ 3 2)
+(float (/ 3 2))
+(float 3/2)
+quit
+(def vec [1 2 3])
+vec
+(contains? vec 1)
+(contains? vec 5)
+(defn cut-at-repetition [a-seq]
+  (loop [a-vec [] b-seq a-seq]
+  (if (or (empty? b-seq) (contains? a-vec (first b-seq)))
+  a-vec
+  (recur (conj a-vec (first b-seq)) (rest b-seq)))))
+(cut-at-repetition '(1 2 3 4 5))
+(cut-at-repetition '(1 2 3 4 1 5))
+(cut-at-repetition '(1 1 3 4 1 5))
+(cut-at-repetition '(1 1 1 4 1 5))
+(cut-at-repetition '(2 2 1 4 1 5))
+(cut-at-repetition '(2 3 1 4 1 5))
+(cut-at-repetition '(2 3 4 4 1 5))
+(cut-at-repetition '(2 3 4 4 2 5))
+(cut-at-repetition '(2 2 4 4 2 5))
+quit
